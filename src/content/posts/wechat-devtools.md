@@ -5,7 +5,6 @@ modDate: 2025-04-19 18:00
 categories: ["wechat"]
 description: "Here is some notes about using Wechat DevTools recently"
 slug: wechat-devtools-notes
-draft: true
 pin: false
 ---
 
