@@ -1,14 +1,14 @@
 ---
 title: Some notes with Wechat DevTools(微信开发者工具)
 pubDate: 2025-04-19
-modDate: 2025-05-06 20:00
+modDate: 2025-06-04 22:00
 categories: ["wechat"]
 description: "Here is some notes about using Wechat DevTools recently"
 slug: wechat-devtools-notes
 pin: false
 ---
 
-Recently, I got a chance to use Wechat DevTools to develop some mini-programs. Then found some problems during development that I want to take a note, the version I am using is `1.06.2412050` & `1.06.2503290`.
+Recently, I got a chance to use Wechat DevTools to develop some mini-programs. Then found some problems during development that I want to take a note, the versions I used are `1.06.2412050`, `1.06.2503290`, `1.06.2503300`.
 
 ## 1. Cannot download base library
 
