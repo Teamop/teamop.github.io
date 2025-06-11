@@ -1,7 +1,7 @@
 ---
 title: Some notes with Wechat DevTools(微信开发者工具)
 pubDate: 2025-04-19
-modDate: 2025-06-04 22:00
+modDate: 2025-06-11 22:00
 categories: ["wechat"]
 description: "Here is some notes about using Wechat DevTools recently"
 slug: wechat-devtools-notes
@@ -64,3 +64,36 @@ So the key here is the `templateEnv` variable, which will be only initialized an
 So the **solution** is:
 
 - don't use the default TS typings, use the official npm package - [miniprogram-api-typings](https://github.com/wechat-miniprogram/api-typings) to manage all the typings manually
+
+## 3. Webview Preview is blank
+
+From the [official doc](https://developers.weixin.qq.com/miniprogram/dev/framework/runtime/env.html), in Wechat DevTools, webview is rendered by the embedded Chromium from `NW.js`.
+
+As for now, the used `NW.js` version is `0.54.1` and `Chromium` version is `91`.
+![version](../../assets/wechat/version.png)
+
+Then from caniuse, the total supported ES version is up to `ES2021`.
+
+The scenario I met is: when loading an Angular project in the webview, always get blank from preview. Error like this：
+
+```
+Uncaught SyntaxError: Unexpected token '{'
+```
+
+From the stack trace, the error comes from the code like this:
+
+```
+    static {
+        xxxxxx
+    }
+```
+
+So this is the feature - [`class static initialization block`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Static_initialization_blocks), which is the new feature in ES2022.And from caniuse, this feature is not supported in Chrome 91. So that's the reason for the page is just blank in preview.
+
+Also Angular defaults to ES2022 after Angular 17.
+
+So the `solution` is:
+
+- downgrade the compiler version for the final javascript output.
+
+  _Notes: if don't have issue in real mobile, so maybe just have this change for debugging in local environment only_.
