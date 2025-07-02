@@ -1,14 +1,14 @@
 ---
 title: Some notes with Wechat DevTools(微信开发者工具)
 pubDate: 2025-04-19
-modDate: 2025-06-11 22:00
+modDate: 2025-07-02 22:00
 categories: ["wechat"]
 description: "Here is some notes about using Wechat DevTools recently"
 slug: wechat-devtools-notes
 pin: false
 ---
 
-Recently, I got a chance to use Wechat DevTools to develop some mini-programs. Then found some problems during development that I want to take a note, the versions I used are `1.06.2412050`, `1.06.2503290`, `1.06.2503300`.
+Recently, I got a chance to use Wechat DevTools to develop some mini-programs. Then found some problems during development that I want to take a note, the versions I tested are `1.06.2412050` - `1.06.2504010`.
 
 ## 1. Cannot download base library
 
@@ -97,3 +97,20 @@ So the `solution` is:
 - downgrade the compiler version for the final javascript output.
 
   _Notes: if don't have issue in real mobile, so maybe just have this change for debugging in local environment only_.
+
+## 4. Build NPM error for optional chaining
+
+When trying to run the `Build NPM` menu, prompt this error:
+
+```
+An Error Occupied
+SyntaxError: parse js file (xxxxxxxx) failed: Unexpected token (63:13)
+```
+
+From the path above, found that the error is caused by the optional chaining usage.
+
+From the above [Issue 3](#3-webview-preview-is-blank), looks like Wechat mini-program should support up to `ES2021`, when trying to use in the code directly, no issue, but only issue for `Build NPM`.
+
+After checking the code to pack npm, found that this issue is caused by `acorn` for packing npm, but `acorn` supports optional chaining after `v7.3.0`. So the version used by Wechat DevTools is still very old.
+
+So the `solution` is: avoid use NPM dependencies with ES2020+ format right now.
