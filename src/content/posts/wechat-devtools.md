@@ -8,7 +8,7 @@ slug: wechat-devtools-notes
 pin: false
 ---
 
-Recently, I got a chance to use Wechat DevTools to develop some mini-programs. Then found some problems during development that I want to take a note, the versions I tested are `1.06.2412050` - `1.06.2504010`.
+Recently, I got a chance to use Wechat DevTools to develop some mini-programs. Then found some problems during development that I want to take a note, apply to versions <= 2.01 with NW.js.
 
 ## 1. Cannot download base library
 
