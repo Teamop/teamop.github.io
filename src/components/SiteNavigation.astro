@@ -8,7 +8,7 @@ const { translate: t } = Astro.locals
 <nav class="text-center font-bold" flex="~ col gap-4">
   <ul lg="flex-col items-start text-4" class="text-3.5" flex="~ row gap-2 justify-center">
     {
-      navLinks.map((nav) => (
+      navLinks.map(nav => (
         <li>
           <a class="" href={nav.href}>
             {t(nav.name)}

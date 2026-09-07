@@ -1,7 +1,7 @@
 ---
+import type { Post } from '~/types'
 import { themeConfig } from '~/.config'
 import LayoutDefault from '~/layouts/LayoutDefault.astro'
-import type { Post } from '~/types'
 import { formatDate, getCategories, getPathFromCategory } from '~/utils'
 
 export async function getStaticPaths() {
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 const { posts, name } = Astro.props
 
 function getListItems(posts: Post[]) {
-  const result = posts.map((post) => ({
+  const result = posts.map(post => ({
     title: post.data.title,
     href: `/posts/${post.id}/`,
     date: formatDate(post.data.pubDate),
@@ -30,7 +30,7 @@ function getListItems(posts: Post[]) {
 <LayoutDefault>
   <section>
     <h2 class="post-title"># {name}</h2>
-    <ul class="pl-6 py-3" flex="~ col gap-4">
+    <ul class="py-3 pl-6" flex="~ col gap-4">
       {
         getListItems(posts).map(({ title, href, date }) => (
           <li>

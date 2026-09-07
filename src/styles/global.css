@@ -2,16 +2,26 @@
   --uno-colors-primary: theme('colors.primary');
   --uno-colors-background: theme('colors.background');
   --uno-fonts-ui: theme('fontFamily.ui');
-  --uno-colors-shadow: theme('colors.shadow');
+  --uno-colors-shadow: rgb(var(--un-preset-theme-colors-shadow) / var(--un-preset-theme-colors-shadow--alpha, 1));
 }
 html {
   --at-apply: antialiased;
-  --at-apply: 'bg-background c-primary font-ui text-shadow-color-shadow';
+  --at-apply: 'c-primary font-ui text-shadow-color-shadow';
 
+  min-height: 100vh;
+  background-color: var(--uno-colors-background);
   text-shadow: 1px 1px 1px var(--uno-colors-shadow);
   background-size: 7px 7px;
-  background-image: linear-gradient(to right, var(--uno-colors-shadow) 1px, transparent 1px),
+  background-image:
+    linear-gradient(to right, var(--uno-colors-shadow) 1px, transparent 1px),
     linear-gradient(to bottom, var(--uno-colors-shadow) 1px, transparent 1px);
+}
+
+.prose {
+  --un-prose-body: rgb(var(--un-preset-theme-colors-primary) / var(--un-preset-theme-colors-primary--alpha, 1));
+  --un-prose-headings: rgb(var(--un-preset-theme-colors-primary) / var(--un-preset-theme-colors-primary--alpha, 1));
+  --un-prose-links: rgb(var(--un-preset-theme-colors-primary) / var(--un-preset-theme-colors-primary--alpha, 1));
+  --un-prose-bold: rgb(var(--un-preset-theme-colors-primary) / var(--un-preset-theme-colors-primary--alpha, 1));
 }
 
 :where(a):not(.not-underline-hover) {

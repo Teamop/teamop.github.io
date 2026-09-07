@@ -20,6 +20,6 @@ const categoryList = post.data.categories ?? []
   <div class="text-3.5">
     <span>{t(post.data.modDate ? 'updated_at' : 'posted_at')}</span>
     <time>{formatDate(post.data.modDate ?? post.data.pubDate)}</time>
-    {categoryList.map((category) => <PostCategory category={category} />)}
+    {categoryList.map(category => <PostCategory category={category} />)}
   </div>
 </header>

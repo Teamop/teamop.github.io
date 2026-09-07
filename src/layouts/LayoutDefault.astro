@@ -1,11 +1,11 @@
 ---
 import { themeConfig } from '~/.config'
+import Analytics from '~/components/Analytics.astro'
+import LaTeX from '~/components/LaTeX.astro'
 import SiteFooter from '~/components/SiteFooter.astro'
 import SiteNavigation from '~/components/SiteNavigation.astro'
-import SiteTitle from '~/components/SiteTitle.astro'
 import SiteSeo from '~/components/SiteSeo.astro'
-import LaTeX from '~/components/LaTeX.astro'
-import Analytics from '~/components/Analytics.astro'
+import SiteTitle from '~/components/SiteTitle.astro'
 import ThemeScript from '~/components/ThemeScript.astro'
 import '~/styles/global.css'
 
@@ -22,7 +22,7 @@ const dark = themeConfig.appearance.theme === 'dark'
   </head>
 
   <body
-    class="h-100vh max-w-1200px min-w-390px mx-a"
+    class="mx-a h-100vh max-w-1200px min-w-390px"
     p="7.5 lg:(y-0 x-20)"
     lg="grid gap-x-6 cols-[3fr_1fr] rows-[1fr_9rem]"
   >
@@ -35,7 +35,7 @@ const dark = themeConfig.appearance.theme === 'dark'
       <SiteNavigation />
     </header>
 
-    <main class="transition-swup-main overflow-y-scroll scrollbar-hide outline-none" lg="row-1-3 col-1-2 py-20 ">
+    <main class="transition-swup-main overflow-y-scroll outline-none scrollbar-hide" lg="row-1-3 col-1-2 py-20 ">
       <slot />
     </main>
 

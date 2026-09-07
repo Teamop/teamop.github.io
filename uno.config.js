@@ -1,10 +1,10 @@
 import presetAttributify from '@unocss/preset-attributify'
+import presetWind3 from '@unocss/preset-wind3'
 import transformerDirectives from '@unocss/transformer-directives'
 import {
   defineConfig,
   presetIcons,
   presetTypography,
-  presetUno,
   transformerVariantGroup,
 } from 'unocss'
 import presetTheme from 'unocss-preset-theme'
@@ -54,15 +54,20 @@ export default defineConfig({
     ],
   ],
   presets: [
-    presetUno(),
+    presetWind3(),
     presetTypography({ cssExtend }),
     presetAttributify(),
-    presetIcons({ scale: 1.2, warn: true }),
+    presetIcons({
+      scale: 1.2,
+      warn: true,
+      collections: {
+        mdi: () => import('@iconify-json/mdi/icons.json').then(i => i.default),
+      },
+    }),
     presetTheme ({
       theme: {
         dark: {
           colors: { ...colorsDark, shadow: '#FFFFFF0A' },
-          // TODO 需要配置代码块颜色
         },
       },
     }),
@@ -73,6 +78,7 @@ export default defineConfig({
   },
   shortcuts: [
     ['post-title', 'text-5 font-bold lh-7.5 m-0'],
+    ['prose', 'prose-default'],
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
   safelist: [
